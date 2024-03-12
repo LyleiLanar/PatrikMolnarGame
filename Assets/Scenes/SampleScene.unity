@@ -321,6 +321,10 @@ GameObject:
   - component: {fileID: 1149896894}
   - component: {fileID: 1149896893}
   - component: {fileID: 1149896892}
+  - component: {fileID: 1149896896}
+  - component: {fileID: 1149896897}
+  - component: {fileID: 1149896898}
+  - component: {fileID: 1149896899}
   m_Layer: 0
   m_Name: Road
   m_TagString: Untagged
@@ -414,6 +418,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1149896896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149896891}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10fc7ad64b85e14489d2d9fd377b325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  a: {x: 0.51, y: 0.5}
+  b: {x: 1.33, y: 0.77}
+--- !u!114 &1149896897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149896891}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc9ea33bf5e46141b0b8270e8ae64ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testInt: 0
+  testFloat: 0
+  testString: 
+  testBool: 0
+--- !u!114 &1149896898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149896891}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3b6d00f99fb4543a19e08e67558b59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 3
+  input1: 0
+  input2: 0
+  power: 1
+  absolute: 0
+  sign: 1
+  rounded: 0
+  ceiled: 0
+  floor: 0
+  min: 0
+  sqrt: 0
+--- !u!114 &1149896899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149896891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9427055d8da90a4787fa123e0c35d48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammo: 3
 --- !u!1 &1208505341
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,6 +696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfe034cd0df1a241ba76c14b311c761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
 --- !u!1 &1896734827
 GameObject:
   m_ObjectHideFlags: 0
