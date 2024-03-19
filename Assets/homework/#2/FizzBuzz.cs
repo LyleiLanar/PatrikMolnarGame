@@ -27,7 +27,7 @@ public class FizzBuzz : MonoBehaviour
             }
             else
             {
-                results.Add(i.ToString());
+                results.Add($"{i}");
             }
         }
     }

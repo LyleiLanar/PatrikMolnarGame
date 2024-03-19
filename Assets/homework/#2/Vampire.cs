@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public struct Item
+public class Item
 {
     public string name;
     public int price;
@@ -31,7 +31,6 @@ public class Vampire : MonoBehaviour
         moringstar = IsItAffordable(MORNINGSTAR);
         dagger = IsItAffordable(DAGGER);
         vampireTooth = IsItAffordable(TOOTH);
-
     }
 
     private bool IsItAffordable(Item item) => (IsAffordableFromCoin(item.price) || IsAffordableFromBlood(item.price));

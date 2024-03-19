@@ -9,13 +9,25 @@ public class Triangle : MonoBehaviour
 
     private void OnValidate()
     {
+        int m = c;
+        if (a > b && a > c)
+        {
+            c = a;
+            a = m;
+        }
+        if (b > a && b > c)
+        {
+            c = b;
+            b = m;
+        }
+
         if (!IsTriangle())
         {
             triangle = "It is a not a triangle at all!";
         }
         else if (!IsRightTriangle)
         {
-            triangle = "No it is not a Right Triangle!";
+            triangle = "No, it is not a Right Triangle!";
         }
         else
         {
