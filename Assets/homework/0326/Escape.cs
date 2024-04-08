@@ -14,10 +14,7 @@ public class Escape : MonoBehaviour
         get
         {
             float distanceFromEnemy = Vector3.Distance(transform.position, enemy.position);
-            if (distanceFromEnemy < minDistance)
-                return true;
-
-            return false;
+            return distanceFromEnemy < minDistance;
         }
     }
 
@@ -37,6 +34,11 @@ public class Escape : MonoBehaviour
         speed = Mathf.Clamp(speed, 0, maxSpeed);
         transform.position = Vector3.MoveTowards(transform.position, transform.position + escapingVector, speed * Time.deltaTime);
 
+        LookForward();
+    }
+
+    private void LookForward()
+    {
         if (transform.position.x - (transform.position + escapingVector).x > 0)
         {
             transform.rotation = new Quaternion(0, 180, 0, 0);
@@ -45,5 +47,11 @@ public class Escape : MonoBehaviour
         {
             transform.rotation = new Quaternion(0, 0, 0, 0);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, minDistance);
     }
 }

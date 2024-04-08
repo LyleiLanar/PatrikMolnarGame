@@ -3,11 +3,6 @@ using UnityEngine;
 public class Chicken : MonoBehaviour
 {
     public GameObject Egg;
-    void Start()
-    {
-
-    }
-
     private void Update()
     {
         PutAnEgg();

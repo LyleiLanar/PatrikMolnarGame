@@ -2,54 +2,43 @@ using UnityEngine;
 
 public class SpaceShip : MonoBehaviour
 {
-    [SerializeField] float speed;
-    [SerializeField] Vector2 direction;
-    [SerializeField] float acceleration = 0.2f;
+    [SerializeField] float acceleration;
     [SerializeField] float maxSpeed;
-    [SerializeField] float manouvering = 0.2f;
+    [SerializeField] float manouvering;
+    [SerializeField] float drag = 1.1f;
+    Vector3 velocity;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
+        float z = Input.GetAxisRaw("Horizontal");
 
+        //Mozgás
+        Vector3 step = velocity * Time.deltaTime;
+        transform.position += step;
+
+        //Forgatás
+        transform.Rotate(0, 0, -z * Time.deltaTime * manouvering);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Akkor használjuk, amikor gyorsulást vagy lassulást kell használni.
+    void FixedUpdate()
     {
-        Controll();
-        Move();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Bumm!"); // Pillanatszerû input nem való fixedUpdate-be!
+        }
+
+        //Input
+        float y = Input.GetAxisRaw("Vertical");
+
+        //Gyorsítás
+        velocity += transform.up * acceleration * y * Time.fixedDeltaTime;
+
+        //Lassítás (drag => közegellenállás)
+        Vector3 dragVector = -velocity * drag;
+        velocity += dragVector * Time.fixedDeltaTime;
+
+        //Max sebesség
+        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
     }
-
-    void Accelerate()
-    {
-        if (speed < maxSpeed)
-            speed += acceleration;
-    }
-
-    void Deceleration()
-    {
-        if (speed >= 0)
-            speed -= acceleration;
-    }
-
-    void Move()
-    {
-        transform.position += (Vector3)(direction * speed * Time.deltaTime);
-    }
-
-    void Controll()
-    {
-        if (Input.GetKey(KeyCode.W))
-            Accelerate();
-
-        if (Input.GetKey(KeyCode.S))
-            Deceleration();
-
-        float x = Input.GetAxis("Horizontal");
-
-        transform.rotation = new Quaternion(x, 0, 0, 0);
-
-    }
-
 }

@@ -14,15 +14,7 @@ public class GetFood : MonoBehaviour
         if (Vector3.Distance(transform.position, target.position) > standoff)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-            if (transform.position.x - target.position.x > 0)
-            {
-                transform.rotation = new Quaternion(0, 180, 0, 0);
-            }
-            else
-            {
-                transform.rotation = new Quaternion(0, 0, 0, 0);
-            }
+            LookForward(target);
         }
     }
 
@@ -33,6 +25,18 @@ public class GetFood : MonoBehaviour
             return foodSource1;
         }
         return foodSource2;
+    }
+
+    private void LookForward(Transform target)
+    {
+        if (transform.position.x - target.position.x > 0)
+        {
+            transform.rotation = new Quaternion(0, 180, 0, 0);
+        }
+        else
+        {
+            transform.rotation = new Quaternion(0, 0, 0, 0);
+        }
     }
 
 }
