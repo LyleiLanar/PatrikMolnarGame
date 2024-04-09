@@ -5,51 +5,20 @@ public class PositionDrawer : MonoBehaviour
     [SerializeField] float axisSize;
     [SerializeField] float ballSize;
 
-    enum Axis
-    {
-        x, y, z
-    }
-
     private void OnDrawGizmos()
     {
-        DrawAxis(Axis.x);
-        DrawAxis(Axis.y);
-        DrawAxis(Axis.z);
+        DrawAxis(Color.red, transform.right);
+        DrawAxis(Color.green, transform.up);
+        DrawAxis(Color.blue, transform.forward);
     }
 
-    private void DrawAxis(Axis axis)
+    private void DrawAxis(Color color, Vector3 direction)
     {
-        Vector3 direction;
-        Color color;
-
-        switch (axis)
-        {
-            case Axis.x:
-                direction = transform.right;
-                color = Color.red;
-                break;
-
-            case Axis.y:
-                direction = transform.up;
-                color = Color.green;
-                break;
-
-            case Axis.z:
-                direction = transform.forward;
-                color = Color.blue;
-                break;
-
-            default:
-                direction = Vector3.zero;
-                color = Color.white;
-                break;
-        }
-
+        Vector3 position = transform.position;
         Gizmos.color = color;
-
-        Gizmos.DrawLine(transform.position, (transform.position + direction * axisSize));
-        Gizmos.DrawLine(transform.position, (transform.position - direction * axisSize));
-        Gizmos.DrawSphere((transform.position + direction * axisSize), ballSize);
+        Vector3 sizedDirection = direction * axisSize;
+        Gizmos.DrawLine(position - sizedDirection, position + sizedDirection);
+        Gizmos.DrawSphere((position + direction * axisSize), ballSize);
 
     }
 }
