@@ -8,9 +8,12 @@ public class Shooter : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject newProjectile = Instantiate(boltPrototype);
-            newProjectile.transform.position = transform.position;
-            newProjectile.transform.rotation = transform.rotation;
+            GameObject newBolt = Instantiate(boltPrototype);
+            Rigidbody2D boltRb = newBolt.GetComponent<Rigidbody2D>();
+
+            newBolt.transform.position = transform.position;
+            newBolt.transform.rotation = transform.rotation;
+            boltRb.velocity = transform.up;
         }
     }
 }
